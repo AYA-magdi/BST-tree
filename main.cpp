@@ -43,3 +43,48 @@ public:
         return r;
     }
 };
+
+void preorder(Node *r) //--root--left--right
+{
+    if (r == NULL)
+        return;
+    cout << r->data << "\t";
+    preorder(r->left);
+    preorder(r->right);
+}
+void inorder(Node *r) //--left--root--right
+{
+    if (r == NULL)
+        return;
+    inorder(r->left);
+    cout << r->data << "\t";
+    inorder(r->right);
+}
+void postorder(Node *r) //--left--right--root
+{
+    if (r == NULL)
+        return;
+    postorder(r->left);
+    postorder(r->right);
+    cout << r->data << "\t";
+}
+
+Node *search(Node *r, int key)
+{
+    if (r == NULL)
+    {
+        return NULL;
+    }
+    else if (r->data == key)
+    {
+        return r;
+    }
+    else if (key < r->data)
+    {
+        return search(r->left, key);
+    }
+    else
+    {
+        return search(r->right, key);
+    }
+}
